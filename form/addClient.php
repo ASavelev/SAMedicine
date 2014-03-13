@@ -1,3 +1,4 @@
+
 <?
 // Подключаемся к БД 
 include "../config/config.php"; 
