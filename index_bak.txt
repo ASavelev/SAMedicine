@@ -1,0 +1,74 @@
+<?php 
+
+// Подключаемся к БД 
+include "config.php"; 
+
+// Выполняем SQL-запрос
+$query = 'select lastName,
+  firstName,
+  patrName,
+  birthDate ,
+  sex
+  From Client
+';
+$result = mysql_query($query) or die('Запрос не удался: ' . mysql_error());
+
+// Выводим результаты в html
+echo "<table>\n";
+while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+    echo "\t<tr>\n";
+    foreach ($line as $col_value) {
+        echo "\t\t<td>$col_value</td>\n";
+    }
+    echo "\t</tr>\n";
+}
+echo "</table>\n";
+
+
+// Делаем выборку всех данных из таблицы test  
+$r = mysql_query("SELECT * FROM Client"); 
+
+// Выводим количество столбцов таблицы test 
+echo mysql_num_rows($r); 
+     
+if(!$r)exit(mysql_error()); 
+// Выводим имя пользователя, которое находится третьем в столбце name 
+echo mysql_result($r, 0, 'lastName');
+
+
+echo "<table width=100% border=1>";
+echo "<tr>";
+echo "<td colspan=2>";
+
+<form method = "post">
+<input type = "submit" name = "button1" value = "Кнопка 1">
+<input type = "submit" name = "button2" value = "Кнопка 2">
+<input type = "submit" name = "button3" value = "Кнопка 3">
+<form>
+
+
+if($_POST['button1']){echo 'Вы нажали кнопку 1';}
+if($_POST['button2']){echo 'Вы нажали кнопку 2';}
+if($_POST['button3']){echo 'Вы нажали кнопку 3';}
+
+
+echo "</td>";
+echo "</tr>";
+echo "<tr>";
+echo "<td >";
+echo "</td>";
+echo "<td >";
+echo "</td>";
+echo "</tr>";
+echo "<tr>";
+echo "<td colspan=2>";
+echo "</td>";
+echo "</tr>";
+echo "</table>";
+
+
+?>
+
+
+
+

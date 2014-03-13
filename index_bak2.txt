@@ -1,0 +1,130 @@
+<title>SAMedicine</title>
+<?
+// Подключаемся к БД 
+include "config/config.php"; 
+// Делаем выборку всех данных из таблицы test  
+$r = mysql_query("SELECT * FROM Client"); 
+$query = 'select lastName,
+  firstName,
+  patrName,
+  birthDate ,
+  sex
+  From Client
+';
+$result = mysql_query($query) or die('Запрос не удался: ' . mysql_error());
+<?php 
+if(isset($_POST['button2'])) {
+$lastName = strip_tags(trim($_POST['lastName']));
+$firstName = strip_tags(trim($_POST['firstName']));
+$patrName = strip_tags(trim($_POST['patrName']));
+$birthDate = strip_tags(trim($_POST['birthDate']));
+$sex = strip_tags(trim($_POST['sex']));
+if(empty($lastName) || empty($firstName) || empty($patrName) || empty($birthDate) || empty($sex)) 
+echo 'Вы заполнили не все данные';
+  else {
+ if(get_magic_quotes_gpc()) {
+$lastName = stripslashes($lastName);
+$firstName = stripslashes($firstName);
+$patrName = stripslashes($patrName);
+$birthDate = stripslashes($birthDate);
+$sex = stripslashes($sex);
+ }
+$query = sprintf("INSERT INTO `Client` (`lastName`, `firstName`, `patrName`, `birthDate`, `sex`) VALUES ('$lastName', '$firstName', '$patrName', '$birthDate', '$sex')");
+$ins = mysql_query($query);
+echo ($ins) ? 'Данные успешно добавлены' : 'Ошибка: '.mysql_error();
+echo  '<META HTTP-EQUIV="Refresh" CONTENT="0; URL=../index.php">';
+  }
+}
+?>
+
+
+
+?>
+<table width=100% height=100% border=1>
+<tr height=3%>
+<td colspan=2>
+<SCRIPT LANGUAGE="JavaScript"></SCRIPT>
+
+<form method = "post">
+<input type = "submit" name = "button1" formaction="index.php" value = "Картотека">
+<input type = "submit" name = "button2" value = "Мед карта">
+<form>
+<?
+if($_POST['button2']){echo 'Вы нажали кнопку 2';}
+?>
+</td>
+</tr>
+<tr>
+<td >
+<? echo "<table>\n";
+while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+    echo "\t<tr>\n";
+    foreach ($line as $col_value) {
+        echo "\t\t<td>$col_value</td>\n";
+    }
+    echo "\t</tr>\n";
+}
+echo "</table>\n";
+ ?>
+</td>
+<td width=20% valign="top">
+<table>
+<tr><td colspan=2>Фильтр<br/><br/></td></tr>
+<form method='POST'>
+<tr>
+<td>Фамилия 
+</td>
+<td><input type="TEXT" name="lastName">
+</td>
+</tr>
+
+<tr>
+<td>Имя 
+</td>
+<td><input type="TEXT" name="firstName">
+</td>
+</tr>
+
+<tr>
+<td>Отчество 
+</td>
+<td><input type="TEXT" name="patrName">
+</td>
+</tr>
+
+<tr>
+<td>Дата рождения 
+</td>
+<td><input type="date" name="birthDate">
+</td>
+</tr>
+<tr>
+<td><br/><br/><button type="reset" name="button3">Очистить</button>
+</td>
+<td><br/><br/><button type="sumbit" name="button4">Применить</button>
+</td>
+</tr>
+</form>
+</table>
+
+
+
+</td>
+</tr>
+<tr height=3%>
+<td colspan=2>
+<?
+// Выводим количество столбцов таблицы test 
+echo "Колличество записей &nbsp";
+echo mysql_num_rows($r); 
+?>
+</td>
+</tr>
+<tr height=3%>
+<td colspan=2>
+<form method = "post">
+<input type = "submit" name = "button5" formaction="form/addClient.php" value = "Регистрация пациента">
+<form>
+</td>
+</tr>
+</table>
