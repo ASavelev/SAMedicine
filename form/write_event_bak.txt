@@ -1,0 +1,23 @@
+
+<?
+    echo '<table border="1" width=100%>';
+   echo '<tbody>';
+// выводим в HTML-таблицу все данные клиентов из таблицы MySQL 
+   while($sel = mysql_fetch_array($ActionPropertyType)){
+      $ActionPropertyTypeName = $sel[name];
+	  $ActionPropertyTypeid = $sel[id];
+//       echo '<tr>';
+//      echo '<td width=30%>' . $ActionPropertyTypeName . '</td>';
+//	echo '<td width=30%>' . $ActionPropertyName . '</td>';	
+//	echo '</tr>';
+   }
+  while($sel1 = mysql_fetch_array($ActionProperty)){
+//      echo '<td width=30%>';
+//	if($ActionPropertyTypeid == $sel1[type_id]) $ActionPropertyName = $sel1[name];
+//	echo '</td>';
+//      echo '</tr>';
+}
+	  echo '</tbody>';
+   echo '</table>';
+
+?>

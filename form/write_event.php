@@ -1,17 +1,22 @@
 <title>SAMedicine</title>
+<table width='100%'>
+<tr><td>
 <?
 // Подключаемся к БД 
 include "../config/config.php"; 
 $client_id=$_GET['client'];
 $event_id=$_GET['event'];
 $type_id=$_GET['type'];
+
+$ActionPropertyType = mysql_query("select * from ActionPropertyType;");	
+$ActionProperty = mysql_query("select * from ActionProperty");
+
 $event_type = mysql_query("select * from EventType;");
 $event = mysql_query("select * from Event where id=$event_id;");
    while($sel = mysql_fetch_array($event)){
 $begDate = $sel['begDate'];
 $endDate = $sel['endDate'];
 $number = $sel['number'];
-$ActionPropertyType = mysql_query("select * from ActionPropertyType;");
 
 }
 
@@ -58,23 +63,45 @@ echo  "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=event.php?client=$client_id'>"
 }
 ?>
 
-
 <?
-    echo '<table border="1" width=100%>';
-   echo '<tbody>';
-// выводим в HTML-таблицу все данные клиентов из таблицы MySQL 
-   while($sel = mysql_fetch_array($ActionPropertyType)){
-      echo '<tr>';
-      echo '<td width=30%>' . $sel['name'] . '</td>';
-      echo '<td></td>';
-      echo '</tr>';
-   }
-    echo '</tbody>';
-   echo '</table>';
+echo '<table border="1" width="100%">';
+echo '<tbody>';
+while($sel1 = mysql_fetch_array($ActionPropertyType)){
+echo '<tr>';
+echo "<td width='40%'>";
+echo $sel1['name'];
+echo '</td>';
+echo '<td>';
+echo "<select size='1' name='value'>";
+//$sel =  mysql_fetch_array($ActionProperty);
+//$PropertyName=$sel['name'];
+//$PropertyTypeId=$sel['type_id'];
 
+$PropertyId=$sel1['id'];
+$ActionProperty = mysql_query("select * from ActionProperty");
+while ($sel = mysql_fetch_array($ActionProperty)){
+$PropertyName=$sel['name'];
+$PropertyTypeId=$sel['type_id'];
+if( strcmp($PropertyTypeId,$PropertyId)==0) {
+ echo '<option>'; 
+ echo $PropertyName;
+ echo '</option>';
+} 
+  
+}
+echo '</select>'; 
+echo '</td>';
+
+echo '</tr>';
+}
+
+	echo '</tbody>';
+	echo '</table>'
 ?>
 
 </td></tr>
+
+
 <?
       echo '<tr>';
       echo "<td> 
@@ -85,4 +112,5 @@ echo  "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=event.php?client=$client_id'>"
 ?>
 </table>
 <form>
-
+</td></tr>
+</table>
