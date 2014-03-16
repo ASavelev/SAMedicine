@@ -120,7 +120,7 @@ if($sel['real_status'] == 2 && $sel['sex'] == 2){echo ' Замужем';}
 echo '</td>';
 // . $sel['real_status']  . '</td>';
       echo "<td align=center><form method = 'post'><input type = 'submit' name = 'button2'  formaction='form/event.php?client=$sel[id]' value = 'Мед карта'><form></td>";
-      echo "<td align=center><form method = 'post'><input type = 'submit' name = 'button6' value = 'Редактировать'><form></td>";
+      echo "<td align=center><form method = 'post'><input type = 'submit' name = 'button6'  formaction='form/writeClient.php?client=$sel[id]' value = 'Редактировать'><form></td>";
       echo "<td align=center><form method = 'post'><input type = 'submit' name = 'button7' value = 'Удалить'><form></td>";
       echo '</tr>';
    }
