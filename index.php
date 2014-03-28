@@ -16,11 +16,6 @@ $no_filter = 'Введите данные';
 $sex_m = М;
 $sex_g = Ж;
 ?>
-<script language=JavaScript>
-function ft1() {
-var ft1 = window.open("form/addClient.php", "kv1", "resizable,width=220,hight=190");
-}
-</script>
 <?
 if(isset($_POST['button4'])) {
 $lastName = strip_tags(trim($_POST['lastName']));
@@ -65,10 +60,11 @@ $select = $select_s;
 <table width=100% height=100% border=1>
 <tr height=3%>
 <td colspan=2>
-<SCRIPT LANGUAGE="JavaScript"></SCRIPT>
 
 <form method = "post">
 <input type = "submit" name = "button1" formaction="index.php" value = "Картотека">
+<input type = "submit" name = "button7" formaction="admin/index.php" value = "Администрирование">
+<input type = "submit" name = "button8" formaction="statistic/index.php" value = "Статистика">
 <form>
 <?
 if($_POST['button2']){echo  "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=../index.php?page=$sel[id]'>";}
@@ -121,9 +117,15 @@ echo '</td>';
 // . $sel['real_status']  . '</td>';
       echo "<td align=center><form method = 'post'><input type = 'submit' name = 'button2'  formaction='form/event.php?client=$sel[id]' value = 'Мед карта'><form></td>";
       echo "<td align=center><form method = 'post'><input type = 'submit' name = 'button6'  formaction='form/writeClient.php?client=$sel[id]' value = 'Редактировать'><form></td>";
-      echo "<td align=center><form method = 'post'><input type = 'submit' name = 'button7' value = 'Удалить'><form></td>";
+//      echo "<td align=center><form method = 'post'><input type = 'submit' name = 'button7' value = 'Удалить'><form></td>";
       echo '</tr>';
-   }
+//if(isset($_POST['button7'])) { 
+//$query = sprintf("delete from `Client` WHERE `id`='$sel[id]'");
+//$del = mysql_query($query);
+//echo ($del) ? 'Данные успешно ylfktys' : 'Ошибка: '.mysql_error();
+//   }
+
+	  }
     echo '</tbody>';
    echo '</table>';
 

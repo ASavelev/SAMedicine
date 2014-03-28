@@ -24,6 +24,13 @@ $number = $sel['number'];
 <form method = "post">
 <table>
 <tr><td>
+<?php
+
+echo "<button type='sumbit' name='button4' formaction='write_event.php?client=$client_id&event=$event_id&type=$type_id'>Мед.Карта</button>
+<button type='sumbit' name='button4' formaction='amount.php?client=$client_id&event=$event_id&type=$type_id'>Оплата</button>"
+?>
+</td></tr>
+<tr><td>
 <?
    echo "<table border='1' width='100%' height='100%'>";
    echo '<thead>';
@@ -80,8 +87,9 @@ $PropertyId=$sel1['id'];
 $typeName=$sel1['typeName'];
 $typeName1='Constructor';
 $typeName2='TEXT';
+$typeName3='String';
 $typevalue=$sel1['value'];
-if ($typeName===$typeName1) {
+if ($typeName===$typeName3) {
 echo "<select size='1' name='value'>";
 $rbThesaurus = mysql_query("select * from rbThesaurus");
 $ActionProperty = mysql_query("select * from ActionProperty");
@@ -103,12 +111,34 @@ echo '</option>';
 }
 echo '</select>'; 
 }
-
-
 	if (strcmp($typeName,$typeName2)===0) {
       echo '<input type="text" name="str1" value="">';
 	}
 
+
+if ($typeName===$typeName1) {
+echo "<select size='7' name='value'>";
+$rbThesaurus = mysql_query("select * from rbThesaurus");
+$ActionProperty = mysql_query("select * from ActionProperty");
+while ($sel = mysql_fetch_array($rbThesaurus)) {
+$thCode=$sel['code'];
+$thID=$sel['id'];
+echo $thCode;
+if( strcmp($thCode,$typevalue)==0) {
+$rbThesaurus = mysql_query("select * from rbThesaurus");
+while ($sel2 = mysql_fetch_array($rbThesaurus)) {
+$thgid=$sel2['group_id'];
+if( strcmp($thID,$thgid)==0) {
+echo '<option>'; 
+echo $sel2['name'];
+echo '</option>';
+}
+}
+}
+}
+echo '</select>'; 
+}
+	
 
 //while ($sel = mysql_fetch_array($ActionProperty)){
 //$PropertyName=$sel['name'];
