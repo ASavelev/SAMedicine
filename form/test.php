@@ -1,4 +1,3 @@
-<title>SAMedicine</title>
 
 <script type="text/javascript">
 <!--
@@ -80,15 +79,15 @@ h3 {
 div.tableContainer {
 	clear: both;
 	border: 1px solid #963;
-	height: 685px;
+	height: 285px;
 	overflow: auto;
-	width: 100%
+	width: 50%
 }
 
 /* Reset overflow value to hidden for all non-IE browsers. */
 html>body div.tableContainer {
 	overflow: hidden;
-	width: 100%
+	width: 50%
 }
 
 /* define width of table. IE browsers only                 */
@@ -151,7 +150,7 @@ thead.fixedHeader a:hover {
 /* induced side effect is that child TDs no longer accept width: auto                     */
 html>body tbody.scrollContent {
 	display: block;
-	height: 565px;
+	height: 262px;
 	overflow: auto;
 	width: 100%
 }
@@ -180,182 +179,274 @@ tbody.scrollContent tr.alternateRow td {
 /* Add 16px to last TH for scrollbar padding. All other non-IE browsers. */
 /* http://www.w3.org/TR/REC-CSS2/selector.html#adjacent-selectors        */
 html>body thead.fixedHeader th {
-	width: 5%
+	width: 200px
 }
 
 html>body thead.fixedHeader th + th {
-	width: 9.5%
+	width: 240px
 }
 
 html>body thead.fixedHeader th + th + th {
-	width: 40.8%
+	width: 316px
 }
-
 html>body thead.fixedHeader th + th + th + th {
-	width: 10%
+	width: 316px
 }
-
 html>body thead.fixedHeader th + th + th + th + th {
-	width: 10%
+	width: 316px
 }
-
 html>body thead.fixedHeader th + th + th + th + th + th {
-	width: 20.5%
+	width: 316px
 }
 
 /* define width of TD elements: 1st, 2nd, and 3rd respectively.          */
 /* All other non-IE browsers.                                            */
 /* http://www.w3.org/TR/REC-CSS2/selector.html#adjacent-selectors        */
 html>body tbody.scrollContent td {
-	width: 5%
+	width: 200px
 }
 
 html>body tbody.scrollContent td + td {
-	width: 10%
-	
+	width: 240px
 }
 
 html>body tbody.scrollContent td + td + td {
-	width: 41%
-}
-
-html>body tbody.scrollContent td + td + td + td {
-	width: 10%
-}
-
-html>body tbody.scrollContent td + td + td + td + td {
-	width: 10%
-}
-
-html>body tbody.scrollContent td + td + td + td + td + td {
-	width: 19%
+	width: 300px
 }
 -->
 </style>
 
-<table width='100%' height='100%'>
-<tr><td>
-<?
-// Подключаемся к БД 
-include "../config/config.php"; 
-$client_id=$_GET['client'];
-$event_id=$_GET['event'];
-$type_id=$_GET['type'];
-$rbPrice = mysql_query("select * from rbPrice;");	
-
-?>
-<form method = "post">
-<table width='100%' height='100%'>
-<tr><td>
-<?php
-
-echo "<button type='sumbit' name='button1' formaction='write_event.php?client=$client_id&event=$event_id&type=$type_id'>Мед.Карта</button>
-<button type='sumbit' name='button2' formaction='amount.php?client=$client_id&event=$event_id&type=$type_id'>Оплата</button>"
-?>
-</td></tr>
-<tr><td>
-</td></tr>
-<tr><td>
-<table border=1 width='100%' height='100%'>
-<tr><td width='50%' height='100%'>
 <div id="tableContainer" class="tableContainer">
-<table border=1 width='100%' height='100%'>
-
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="scrollTable">
 <thead class="fixedHeader">
-<tr><th>
-</th><th align='center'>
-Код
-</th><th align='center'>
-Наименование
-</th><th align='center'>
-Частота применения
-</th><th align='center'>
-Кратность пименения
-</th><th align='center'>
-Цена
-</th></tr>
+	<tr>
+		<th><a href="#">Header 1</a></th>
+		<th><a href="#">Header 2</a></th>
+		<th><a href="#">Header 3</a></th>
+	</tr>
 </thead>
 <tbody class="scrollContent">
-<?while ($sel = mysql_fetch_array($rbPrice)) {
-$price_id=$sel['id']; 
-$price_code=$sel['code'];
-$price_name=$sel['name'];
-$price_frequency=$sel["frequency"];
-$price_multiplisity=$sel["multiplisity"];
-$price_summ=$sel["summ"];
-?>
-<tr><td align='center'>
-<input type='checkbox' name='choice' value='<?echo $price_id;?>'>
-</td><td align='center'>
-<?echo $price_code;?>
-</td><td>
-<?echo $price_name;?>
-</td><td align='center'>
-<?echo $price_frequency;?>
-</td><td align='center'>
-<?echo $price_multiplisity;?>
-</td><td align='center'>
-<?echo $price_summ, ' Р.';?>
-</td></tr>
-<?}?>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>And Repeat 1</td>
+		<td>And Repeat 2</td>
+		<td>And Repeat 3</td>
+	</tr>
+	<tr>
+		<td>Cell Content 1</td>
+		<td>Cell Content 2</td>
+		<td>Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>More Cell Content 1</td>
+		<td>More Cell Content 2</td>
+		<td>More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>Even More Cell Content 1</td>
+		<td>Even More Cell Content 2</td>
+		<td>Even More Cell Content 3</td>
+	</tr>
+	<tr>
+		<td>End of Cell Content 1</td>
+		<td>End of Cell Content 2</td>
+		<td>End of Cell Content 3</td>
+	</tr>
 </tbody>
-<tr><td colspan=6>
-Поиск:<br/>Введите код: <input type="search" name="code" value=""><button type='sumbit' name='button3'>Искать</button>
-</td></tr>
-<tr><td colspan=6 align=right>
-<button type='sumbit' name='button4'>>></button>
-</td></tr>
 </table>
 </div>
-</td><td valign=top>
-<table border=1 width='100%' height=100%>
-<tr height=5%><th>
-</th><th>
-Наименование</th><th>
-Частота</th><th>
-Кратностсь</th><th>
-Стоимость</th></tr>
-<tr><td valign=top width=2%>
-<input type='checkbox' name='choice' value=''>
-</td><td valign=top>
-</td><td valign=top>
-<input type='number' name='frequency'></td><td valign=top>
-<input type='number' name='multiplisity'></td><td valign=top>
-</td></tr>
-<tr><td colspan=4 height=5%>
-Итого:</td><td>
-</td></tr>
-<tr><td colspan=5 align=right height=5%>
-<button type='sumbit' name='button5'>Удалить</button>
-<button type='sumbit' name='button6'>Расчитать</button>
-</td></tr>
-</table>
-</td></tr>
-<tr><td colspan=2>
-<table border=1 width=100%>
-<tr>
-<th colspan=2>Медикаменты</th>
-</tr>
-<tr>
-<th>Наименование</th>
-<th>Сумма</th>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Итого:</td>
-<td></td>
-</tr>
-<tr>
-<td colspan=2><button type='sumbit' name='button7'>Добавить</button></td>
-</tr>
-</table>
-</td></tr>
-</table>
-</td></tr>
-</table>
-<form>
-</td></tr>
-</table>
+

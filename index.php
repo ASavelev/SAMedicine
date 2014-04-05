@@ -187,7 +187,7 @@ if(isset($_POST['button4'])) { echo $sel_s ; }
 <tr height=3%>
 <td colspan=2>
 <?
-// Выводим количество столбцов таблицы test 
+// Выводим количество столбцов таблицы Client 
 echo "Колличество записей &nbsp";
 echo mysql_num_rows($r); 
 ?>
