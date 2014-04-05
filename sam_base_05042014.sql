@@ -26,15 +26,13 @@ CREATE TABLE `Action` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `event_id` int(11) NOT NULL,
   `property_type_id` int(11) NOT NULL,
-  `property_id` int(11) NOT NULL,
+  `value` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `property_type_id` (`property_type_id`),
-  KEY `property_id` (`property_id`),
   KEY `event_id` (`event_id`),
   CONSTRAINT `action_ibfk_1` FOREIGN KEY (`property_type_id`) REFERENCES `actionpropertytype` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `action_ibfk_2` FOREIGN KEY (`property_id`) REFERENCES `actionproperty` (`id`) ON DELETE CASCADE,
   CONSTRAINT `action_ibfk_3` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Действие';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='Действие';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +41,7 @@ CREATE TABLE `Action` (
 
 LOCK TABLES `Action` WRITE;
 /*!40000 ALTER TABLE `Action` DISABLE KEYS */;
+INSERT INTO `Action` VALUES (1,1,1,'Нет'),(2,1,2,'40'),(3,1,3,'51');
 /*!40000 ALTER TABLE `Action` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-04-05 16:03:42
+-- Dump completed on 2014-04-05 21:17:09
