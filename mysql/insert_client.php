@@ -26,6 +26,7 @@ create table ActionPropertyType (id int(11) not null primary key AUTO_INCREMENT,
 create table ActionProperty (id int(11) not null primary key AUTO_INCREMENT, type_id int(11), name varchar(150) comment 'Наименование', FOREIGN KEY (type_id) REFERENCES ActionPropertyType(id) ON UPDATE RESTRICT ON DELETE CASCADE) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='Значение свойства действия';
 create table Action (id int(11) not null primary key AUTO_INCREMENT, event_id int(11) not null, property_type_id int(11) not null, property_id int(11) not null, FOREIGN KEY (property_type_id) REFERENCES ActionPropertyType(id) ON UPDATE RESTRICT ON DELETE CASCADE, FOREIGN KEY (property_id) REFERENCES ActionProperty(id) ON UPDATE RESTRICT ON DELETE CASCADE, FOREIGN KEY (event_id) REFERENCES Event(id) ON UPDATE RESTRICT ON DELETE CASCADE) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='Действие';
 create table rbThesaurus (id int(11) not null primary key AUTO_INCREMENT, group_id int(11), code VARCHAR(30) not null, name VARCHAR(255) not null)) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='Тезаурус:';
+create table rbPrice (id int(11) not null primary key AUTO_INCREMENT, name varchar(450) comment 'Наименование', summ double comment 'Цена') ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='Прайс';
 
 
 

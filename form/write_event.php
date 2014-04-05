@@ -26,7 +26,7 @@ $number = $sel['number'];
 <tr><td>
 <?php
 
-echo "<button type='sumbit' name='button4' formaction='write_event.php?client=$client_id&event=$event_id&type=$type_id'>Мед.Карта</button>
+echo "<button type='sumbit' name='button3' formaction='write_event.php?client=$client_id&event=$event_id&type=$type_id'>Мед.Карта</button>
 <button type='sumbit' name='button4' formaction='amount.php?client=$client_id&event=$event_id&type=$type_id'>Оплата</button>"
 ?>
 </td></tr>
@@ -84,13 +84,15 @@ echo '<td>';
 //$PropertyName=$sel['name'];
 //$PropertyTypeId=$sel['type_id'];
 $PropertyId=$sel1['id'];
+$action = mysql_query("select value from Action where event_id = $event_id and property_type_id = $PropertyId limit 1");
+$value = mysql_fetch_assoc($action);
 $typeName=$sel1['typeName'];
 $typeName1='Constructor';
 $typeName2='TEXT';
 $typeName3='String';
 $typevalue=$sel1['value'];
 if ($typeName===$typeName3) {
-echo "<select size='1' name='value'>";
+echo "<select size='1' name='values[]'>";
 $rbThesaurus = mysql_query("select * from rbThesaurus");
 $ActionProperty = mysql_query("select * from ActionProperty");
 while ($sel = mysql_fetch_array($rbThesaurus)) {
@@ -102,22 +104,31 @@ $rbThesaurus = mysql_query("select * from rbThesaurus");
 while ($sel2 = mysql_fetch_array($rbThesaurus)) {
 $thgid=$sel2['group_id'];
 if( strcmp($thID,$thgid)==0) {
-echo '<option>'; 
+if (strcmp($sel2["id"],$value["value"])==0) {
+echo '<option value"' . $sel['id'] . '" selected>'; 
+echo $sel2['name'];
+echo '</option>';
+}
+else {
+echo '<option value"' . $sel['id'] . '">'; 
 echo $sel2['name'];
 echo '</option>';
 }
 }
 }
 }
+}
 echo '</select>'; 
 }
+
+
 	if (strcmp($typeName,$typeName2)===0) {
-      echo '<input type="text" name="str1" value="">';
+      echo "<input type='text' name='values' value='" . $value['value'] . "'>";
 	}
 
 
 if ($typeName===$typeName1) {
-echo "<select size='7' name='value'>";
+echo '<select size="7" multiple="" name="values">';
 $rbThesaurus = mysql_query("select * from rbThesaurus");
 $ActionProperty = mysql_query("select * from ActionProperty");
 while ($sel = mysql_fetch_array($rbThesaurus)) {
@@ -129,14 +140,22 @@ $rbThesaurus = mysql_query("select * from rbThesaurus");
 while ($sel2 = mysql_fetch_array($rbThesaurus)) {
 $thgid=$sel2['group_id'];
 if( strcmp($thID,$thgid)==0) {
-echo '<option>'; 
+if (strcmp($sel2["id"],$value["value"])==0) {
+echo '<option value"' . $sel2["id"] . '" selected>'; 
+echo $sel2['name'];
+echo '</option>';
+}
+else {
+echo '<option value"' . $sel2['id'] . '">'; 
 echo $sel2['name'];
 echo '</option>';
 }
 }
 }
 }
-echo '</select>'; 
+}
+echo '</select>';
+ 
 }
 	
 
@@ -150,6 +169,17 @@ echo '</select>';
 //} 
   
 //}
+
+$values =$_POST["values"];  
+
+//$values = strip_tags(trim($_POST['values']));
+//$values = stripslashes($values);
+//foreach ($_POST["values"] as $keys=>$values) echo $values ; //это  для отладки, работает 
+echo $values;
+//if ($_POST["values"]!=''){echo '11';}
+//Echo $value["value"];
+
+
 
 echo '</td>';
 

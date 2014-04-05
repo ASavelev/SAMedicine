@@ -308,24 +308,32 @@ $price_summ=$sel["summ"];
 </table>
 </div>
 </td><td valign=top>
+
 <table border=1 width='100%' height=100%>
 <tr height=5%><th>
 </th><th>
+Код</th><th>
 Наименование</th><th>
 Частота</th><th>
 Кратностсь</th><th>
 Стоимость</th></tr>
+
+
 <tr><td valign=top width=2%>
 <input type='checkbox' name='choice' value=''>
+</td><td valign=top>
 </td><td valign=top>
 </td><td valign=top>
 <input type='number' name='frequency'></td><td valign=top>
 <input type='number' name='multiplisity'></td><td valign=top>
 </td></tr>
-<tr><td colspan=4 height=5%>
+
+
+
+<tr><td colspan=5 height=5%>
 Итого:</td><td>
 </td></tr>
-<tr><td colspan=5 align=right height=5%>
+<tr><td colspan=6 align=right height=5%>
 <button type='sumbit' name='button5'>Удалить</button>
 <button type='sumbit' name='button6'>Расчитать</button>
 </td></tr>

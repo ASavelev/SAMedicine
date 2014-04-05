@@ -1,4 +1,22 @@
 
+<tr><td valign=top width=2%>
+<input type='checkbox' name='choice' value=''>
+</td><td valign=top>
+</td><td valign=top>
+</td><td valign=top>
+<input type='number' name='frequency'></td><td valign=top>
+<input type='number' name='multiplisity'></td><td valign=top>
+</td></tr>
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
 <!--
 /* http://www.alistapart.com/articles/zebratables/ */
