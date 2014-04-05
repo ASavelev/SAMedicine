@@ -65,12 +65,13 @@ $number = stripslashes($number);
 $query = sprintf("UPDATE `Event` SET begDate='$begDate', endDate='$endDate', number='$number' WHERE id=$event_id");
 $upd = mysql_query($query);
 echo ($upd) ? 'Данные успешно добавлены' : 'Ошибка: '.mysql_error();
-echo  "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=event.php?client=$client_id'>";
+echo ($result_array) ? 'Данные успешно добавлены' : 'Ошибка: '.mysql_error();
+//echo  "<META HTTP-EQUIV='Refresh' CONTENT='0; URL=event.php?client=$client_id'>";
   }
 }
 ?>
 
-<?
+<?php
 echo '<table border="1" width="100%">';
 echo '<tbody>';
 while($sel1 = mysql_fetch_array($ActionPropertyType)){
@@ -123,7 +124,42 @@ echo '</select>';
 
 
 	if (strcmp($typeName,$typeName2)===0) {
-      echo "<input type='text' name='values' value='" . $value['value'] . "'>";
+//$values_t = strip_tags(trim($_POST['values_t']));
+// if(get_magic_quotes_gpc()) {
+//$values_t = stripslashes($values_t);}
+	echo "<input type='text' name='values_" . $PropertyId . "' value='" . $value['value'] . "'>";
+	$values_t = $_POST['values_1'];
+if (gettype($values_t) == 'array')
+{
+foreach ($values_t as $data_string)
+{
+if (trim($data_string)) 
+{
+echo $data_string;
+} 
+}
+}
+else
+{
+if (trim($values_t)) 
+{
+echo $values_t;
+} 
+}
+$result_array = mysql_query("
+		IF EXISTS(SELECT * FROM Action WHERE event_id='$event_id' and propery_type_id='$PropertyID')
+
+		  UPDATE Action 
+		SET value='$values_t'
+		where event_id='$event_id' and propery_type_id='$PropertyId';
+
+		ELSE
+
+		 INSERT INTO Actiom (event_id, propery_type_id, value)
+			VALUES ('$event_id', '$PropertyId', '$values_t');
+    ");
+
+
 	}
 
 
@@ -169,15 +205,17 @@ echo '</select>';
 //} 
   
 //}
-
-$values =$_POST["values"];  
-
+//echo $_POST["values"];
 //$values = strip_tags(trim($_POST['values']));
+// if(get_magic_quotes_gpc()) {
 //$values = stripslashes($values);
-//foreach ($_POST["values"] as $keys=>$values) echo $values ; //это  для отладки, работает 
-echo $values;
+//}//foreach ($_POST["values"] as $keys=>$values) echo $values ; //это  для отладки, работает 
+//echo $values_t;
+
+
 //if ($_POST["values"]!=''){echo '11';}
 //Echo $value["value"];
+
 
 
 
